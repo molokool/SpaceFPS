@@ -639,6 +639,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -652,10 +653,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: ca73c990-af38-4755-9163-3d62a4da55e7
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: SpaceFPS
+  organizationId: nemerim
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
