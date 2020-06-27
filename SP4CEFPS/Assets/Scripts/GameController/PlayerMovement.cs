@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     void Start()
     {
-     
+        Cursor.lockState = CursorLockMode.Locked;
         PV = GetComponent<PhotonView>();
         myCC = GetComponent<CharacterController>();
     }
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         if (PV.IsMine)
         {
             BasicMovement();
-            BasicRotation();
+            
         }
     }
 
