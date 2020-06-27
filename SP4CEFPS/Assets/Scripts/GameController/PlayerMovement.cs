@@ -9,7 +9,13 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController myCC;
     public float movementSpeed;
     public float rotationSpeed;
- 
+    public float gravity = -9.81f;
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
+    bool isGrounded;
+    public float jumpHeight = 3f;
+    Vector3 velocity;
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -19,6 +25,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if(isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
         if (PV.IsMine)
         {
             BasicMovement();
@@ -28,28 +41,27 @@ public class PlayerMovement : MonoBehaviour
 
         void BasicMovement()
         {
-            if (Input.GetKey(KeyCode.Z))
-            {
-                myCC.Move(transform.forward * Time.deltaTime * movementSpeed);
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                myCC.Move(-transform.forward * Time.deltaTime * movementSpeed);
-            }
-            if (Input.GetKey(KeyCode.Q))
-            {
-                myCC.Move(-transform.right * Time.deltaTime * movementSpeed);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                myCC.Move(transform.right * Time.deltaTime * movementSpeed);
-            }
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * x + transform.forward * z;
+        myCC.Move(move * movementSpeed * Time.deltaTime);
+
+        if(Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+        }
+        velocity.y += gravity * Time.deltaTime;
+        myCC.Move(velocity * Time.deltaTime);
         }
     
         void BasicRotation()
     {
         float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * rotationSpeed;
         float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * rotationSpeed;
-        transform.Rotate(new Vector3(mouseY, mouseX));
+        transform.Rotate(new Vector3(0, mouseX));
+        //transform.Rotate(new Vector3(mouseY, 0));
+
     }
 }
