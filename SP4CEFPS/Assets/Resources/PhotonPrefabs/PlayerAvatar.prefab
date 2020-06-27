@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6a82ea864151b4d94015c3c9cbe906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBody: {fileID: 8105249892146019141}
   movementSpeed: 10
   rotationSpeed: 300
   gravity: -9.81

@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private PhotonView PV;
     private CharacterController myCC;
+    public Transform playerBody;
     public float movementSpeed;
     public float rotationSpeed;
     public float gravity = -9.81f;
@@ -15,9 +16,11 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
     public float jumpHeight = 3f;
+    float xRotation = 0f;
     Vector3 velocity;
     void Start()
     {
+     
         PV = GetComponent<PhotonView>();
         myCC = GetComponent<CharacterController>();
     }
@@ -60,8 +63,14 @@ public class PlayerMovement : MonoBehaviour
     {
         float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * rotationSpeed;
         float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * rotationSpeed;
-        transform.Rotate(new Vector3(0, mouseX));
-        //transform.Rotate(new Vector3(mouseY, 0));
 
+    
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        playerBody.Rotate(Vector3.up * mouseX);
     }
+
 }
