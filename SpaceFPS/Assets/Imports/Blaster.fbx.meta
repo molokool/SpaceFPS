@@ -8,26 +8,16 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Blaster_Canon
-    second: {fileID: 2100000, guid: af9e97b9619af164f9133b9241a5f7aa, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Blaster_Hand
     second: {fileID: 2100000, guid: 70a451646bc450d4086cc64a339af33d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Blaster_Orange
+      name: Blaster_Hand
     second: {fileID: 2100000, guid: af9e97b9619af164f9133b9241a5f7aa, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Blaster_Trigger
-    second: {fileID: 2100000, guid: af9e97b9619af164f9133b9241a5f7aa, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Blaster_Violet
     second: {fileID: 2100000, guid: 70a451646bc450d4086cc64a339af33d, type: 2}
   materials:
     materialImportMode: 1
