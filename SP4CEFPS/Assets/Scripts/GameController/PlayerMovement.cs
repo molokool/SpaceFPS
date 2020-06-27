@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     bool isGrounded;
+    public int force = 200;
+    public GameObject Projectile;
     public float jumpHeight = 3f;
     float xRotation = 0f;
     Vector3 velocity;
@@ -38,8 +40,16 @@ public class PlayerMovement : MonoBehaviour
         if (PV.IsMine)
         {
             BasicMovement();
-            
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+
+                GameObject Go = PhotonNetwork.Instantiate(Projectile.name, transform.Find("GunEnd").transform.position, Quaternion.identity, 0);
+                Go.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * force);
+
+            }
         }
+       
     }
 
         void BasicMovement()
