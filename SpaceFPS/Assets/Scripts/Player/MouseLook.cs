@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using phot
 
 public class MouseLook : MonoBehaviour
 {
     public float mouseSensitivity = 100f;
-    private PhotonView PV;
 
     public Transform playerBody;
 

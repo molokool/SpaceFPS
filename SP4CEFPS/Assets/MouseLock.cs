@@ -11,6 +11,7 @@ public class MouseLock : MonoBehaviour
     {
         PV = GetComponentInParent<PhotonView>();
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

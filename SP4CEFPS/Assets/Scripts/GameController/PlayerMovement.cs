@@ -20,11 +20,13 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 3f;
     float xRotation = 0f;
     Vector3 velocity;
+    Camera cam;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         PV = GetComponent<PhotonView>();
         myCC = GetComponent<CharacterController>();
+        cam = GetComponentInChildren<Camera>();
     }
 
 
@@ -44,8 +46,9 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
 
-                GameObject Go = PhotonNetwork.Instantiate(Projectile.name, transform.Find("GunEnd").transform.position, Quaternion.identity, 0);
-                Go.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * force);
+                GameObject Go = PhotonNetwork.Instantiate(Projectile.name, transform.Find("GunEnd").transform.position, Quaternion.identity);
+                Go.GetComponent<Rigidbody>().velocity = cam.transform.forward * force;
+                Destroy(Go, 5f);
 
             }
         }
